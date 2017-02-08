@@ -1,0 +1,26 @@
+﻿@model GrillRoastBaste2.Models.CustomerSubmition
+
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thank You</title>
+</head>
+<body>
+    <div class="jumbotron text-center"> 
+        <h3><strong>Thank you! @Model.Name @Model.SurName</strong></h3> 
+        <p>
+            Your event on @Model.DateOfEvent.ToShortDateString() has been submitted<br />
+            Someone on the team will be in touch with you to discuss the fine details!
+        </p>
+        <p>
+            <em>You should receive an email confirmation shortly.</em>
+        </p>
+    </div>
+</body>
+</html>

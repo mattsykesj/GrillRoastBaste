@@ -1,0 +1,69 @@
+﻿@model GrillRoastBaste2.Models.CustomerSubmition
+
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>  
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/StyleSheet.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="form-container" class="col-sm-4 col-center">
+                @using (@Html.BeginForm(new { @class = "form-group" }))
+                {
+                    <div>
+                        @Html.LabelFor(x => x.Status)
+                        @Html.EnumDropDownListFor(x => x.Status, new { @class = "form-control" })
+                    </div><br />
+                    <div>
+                        @Html.LabelFor(x => x.Name)
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div><br />
+                    <div>
+                        @Html.Label("Surname", "Surname")
+                        @Html.TextBoxFor(x => x.SurName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.SurName)
+                    </div><br />
+                    <div>
+                        @Html.LabelFor(x => x.Phone, "Phone Number")
+                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Phone)
+                    </div><br />
+                    <div>
+                        @Html.LabelFor(x => x.Email, "Email Address")
+                        @Html.TextBoxFor(x => x.Email, new { type = "email", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Email)
+                        </div><br />
+                        <div>
+                            @Html.LabelFor(x => x.EventDescription, "Event Description")
+                            @Html.TextAreaFor(x => x.EventDescription, new { @class = "multiline-text-field form-control" })
+                        </div><br />
+                        <div>
+                            @Html.LabelFor(x => x.Notes)
+                            @Html.TextAreaFor(x => x.Notes, new { @class = "multiline-text-field form-control" })
+                        </div><br />
+                    <div>
+                        @Html.LabelFor(x => x.DateOfEvent, "Date of Event")<br />
+                        @Html.TextBox("DateOfEvent",Model.DateOfEvent.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(x => x.DateOfEvent)
+                    </div><br />
+
+                        <div id="submitButton">
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+</body>
+</html>

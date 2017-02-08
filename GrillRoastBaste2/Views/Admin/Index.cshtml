@@ -1,0 +1,96 @@
+﻿@model List<GrillRoastBaste2.Models.CustomerSubmition>
+
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+</head>
+<body>
+ <div class="text-center">
+    <div class="col-sm-2 col-center">
+    
+        @using (Html.BeginForm(new { @class = "form-group" }))
+        {
+            <p><strong>Search By Name: </strong>@Html.TextBox("SearchString", null, new {@class= "form-control" })
+                <div id="submitButton">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </p>
+        }
+    </div>
+    <div class="col-sm-2 col-center">
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Get, new { @class = "form-group" }))
+            {
+                <p> <strong>Search By Status: </strong> @Html.DropDownList("StatusList", null, new { @class = "form-control" })
+                    <div id="submitButton">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </p>
+            }
+      </div>
+ </div>
+
+    <div class="table-responsive">
+    <table class="table-bordered table-center">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>@Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort }, new { @class = "tableLink" })</th>
+                <th>@Html.ActionLink("Surname", "Index", new { sortOrder = ViewBag.NameSort }, new { @class = "tableLink" })</th> 
+                <th>Phone</th>
+                <th>Email</th>
+                <th>@Html.ActionLink("Event Date", "Index", new { sortOrder = ViewBag.DateSort }, new { @class = "tableLink" })</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+
+
+                if ((int)customer.Status == 0)
+                {
+                @:<tr class="customerNew">
+                    @CreateTable(customer)
+                }
+                if ((int)customer.Status == 1)
+                {
+                @:<tr class="customerReplied">
+                    @CreateTable(customer)
+                }
+                if ((int)customer.Status == 2)
+                {
+                @:<tr class="customerSecured">
+                    @CreateTable(customer)
+                }
+                if ((int)customer.Status == 3)
+                {
+                    @:<tr class="customerDone">
+                    @CreateTable(customer)
+                }
+
+            }
+        </tbody>
+    </table>
+ </div>
+
+</body>
+</html>
+
+@helper CreateTable(GrillRoastBaste2.Models.CustomerSubmition customer) {
+                    <td>@customer.Status</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.SurName</td>
+                    <td>@customer.Phone</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.DateOfEvent.ToShortDateString()</td>
+                    <td>@customer.Location</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new { ID = customer.CustomerID })</td>
+                    <td>@Html.ActionLink("Delete", "Delete", new { ID = customer.CustomerID })</td>
+}

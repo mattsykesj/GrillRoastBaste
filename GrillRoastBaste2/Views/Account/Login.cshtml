@@ -1,0 +1,40 @@
+﻿@model GrillRoastBaste2.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div id="form-container" class="col-sm-4 col-center">
+                @using (Html.BeginForm(new { @class = "form-group" }))
+                {
+                    @Html.ValidationSummary()
+                    <p>
+                        User Name: @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" }) 
+                        @Html.ValidationMessageFor(x => x.UserName,"", new { @class = "text-danger" })
+                    </p>
+
+                    <p>
+                        Password: @Html.PasswordFor(x => x.Password, new { @class = "form-control"}) 
+                        @Html.ValidationMessageFor(x => x.Password,"", new { @class = "text-danger" })
+                    </p>
+
+                    <div id="submitButton">
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+</body>
+</html>

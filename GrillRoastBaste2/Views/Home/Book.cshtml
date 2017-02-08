@@ -1,0 +1,69 @@
+﻿@model GrillRoastBaste2.Models.CustomerSubmition
+
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Book</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div id="form-container" class="col-sm-4 col-center">
+                @using (Html.BeginForm(new { @class = "form-group" }))
+                {
+                    
+                    <p>
+                        Name: @Html.TextBoxFor(x => x.Name, new {@class="form-control"})
+                        @Html.ValidationMessageFor(x => x.Name,"", new {@class="text-danger" })
+                    </p>
+
+                    <p>
+                        Surname: @Html.TextBoxFor(x => x.SurName, new { @class = "form-control" }) 
+                        @Html.ValidationMessageFor(x => x.SurName, "", new { @class = "text-danger" })
+                    </p>
+
+                    <p>
+                        Phone Number: @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" }) 
+                        @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+                    </p>
+
+                    <p>
+                        Email Address: @Html.TextBoxFor(x => x.Email, new { type = "email", @class="form-control"}) 
+                        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                    </p>
+
+                    <p>
+                        Location Of Event: @Html.TextBoxFor(x => x.Location, new { @class = "form-control" }) 
+                        @Html.ValidationMessageFor(x => x.Location, "", new { @class = "text-danger" })
+                   </p>
+
+                    <p>
+                        Event date: @Html.TextBoxFor(x => x.DateOfEvent, new { type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.DateOfEvent, "", new { @class = "text-danger" })
+                    </p>
+
+                    <p>
+                        Event details: @Html.TextAreaFor(x => x.EventDescription, new { @class = "form-control" })
+                    </p>
+
+                    <div id="submitButton">
+                        <button type="submit" class="btn btn-primary">Submit Booking</button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
