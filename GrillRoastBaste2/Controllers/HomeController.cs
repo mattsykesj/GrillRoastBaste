@@ -58,7 +58,7 @@ namespace GrillRoastBaste2.Controllers
                     var credential = new NetworkCredential()
                     {
                         UserName = "mattsykesbbg@gmail.com", //change for grillroastbaste user + pass
-                        Password = "stunl0ck123" //need to store credentials more securely in a database
+                        Password = "stunl0ck123" //need to store credentials more securely in a Database
                     };
 
                     smtp.Credentials = credential;
